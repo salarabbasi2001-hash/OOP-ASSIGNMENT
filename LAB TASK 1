@@ -1,0 +1,380 @@
+\\Task 1: 
+public class CounterClass {
+    // Static variable to keep track of number of objects
+    private static int count = 0;
+
+    // Constructor
+    public CounterClass() {
+        count++; // Increment count whenever a new object is created
+        System.out.println("I am object no. " + count);
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        CounterClass obj1 = new CounterClass(); // I am object no. 1
+        CounterClass obj2 = new CounterClass(); // I am object no. 2
+        CounterClass obj3 = new CounterClass(); // I am object no. 3
+    }
+}
+
+\\Task 2:
+public class CounterClass {
+    // Static variable to keep track of the number of objects
+    private static int count = 0;
+
+    // Constructor
+    public CounterClass() {
+        count++; // Increment count whenever a new object is created
+        System.out.println("I am object no. " + count);
+    }
+
+    // Static method to get the total number of objects created
+    public static int getObjectCount() {
+        return count;
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        CounterClass obj1 = new CounterClass(); // I am object no. 1
+        CounterClass obj2 = new CounterClass(); // I am object no. 2
+        CounterClass obj3 = new CounterClass(); // I am object no. 3
+
+        // Display total number of objects created
+        System.out.println("Total objects created: " + CounterClass.getObjectCount());
+    }
+}
+
+\\Task 3:
+// Class that imitates basic int type
+public class Int {
+    // Data member
+    private int value;
+
+    // Method to initialize Int to zero
+    public void initializeToZero() {
+        value = 0;
+    }
+
+    // Method to initialize Int to a specific integer value
+    public void initializeToValue(int val) {
+        value = val;
+    }
+
+    // Method to display the value
+    public void display() {
+        System.out.println("Int value: " + value);
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        Int myInt = new Int(); // Create an Int object
+
+        myInt.initializeToZero(); // Initialize to zero
+        myInt.display();          // Output: Int value: 0
+
+        myInt.initializeToValue(42); // Initialize to 42
+        myInt.display();             // Output: Int value: 42
+    }
+}
+
+\\Task 4:
+import java.util.Scanner;
+
+public class Time {
+    // Data members
+    private int hours;
+    private int minutes;
+    private int seconds;
+
+    // Method to read time from the user
+    public void readTime() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter hours (0-23): ");
+        hours = sc.nextInt();
+        System.out.print("Enter minutes (0-59): ");
+        minutes = sc.nextInt();
+        System.out.print("Enter seconds (0-59): ");
+        seconds = sc.nextInt();
+
+        // Optional: validate input
+        if (hours < 0 || hours > 23) hours = 0;
+        if (minutes < 0 || minutes > 59) minutes = 0;
+        if (seconds < 0 || seconds > 59) seconds = 0;
+    }
+
+    // Method to display time in 24-hour format
+    public void display24Hour() {
+        System.out.printf("24-hour format: %02d:%02d:%02d%n", hours, minutes, seconds);
+    }
+
+    // Method to display time in 12-hour format
+    public void display12Hour() {
+        String period = (hours >= 12) ? "PM" : "AM";
+        int displayHour = hours % 12;
+        if (displayHour == 0) displayHour = 12; // handle midnight and noon
+        System.out.printf("12-hour format: %02d:%02d:%02d %s%n", displayHour, minutes, seconds, period);
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        Time t = new Time();
+        t.readTime();
+        t.display24Hour();
+        t.display12Hour();
+    }
+}
+
+\\Task 5:
+import java.util.Scanner;
+
+public class Marks {
+    // Data members to store three marks
+    private int mark1;
+    private int mark2;
+    private int mark3;
+
+    // Method to input marks from the user
+    public void set_marks() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter mark 1: ");
+        mark1 = sc.nextInt();
+        System.out.print("Enter mark 2: ");
+        mark2 = sc.nextInt();
+        System.out.print("Enter mark 3: ");
+        mark3 = sc.nextInt();
+    }
+
+    // Method to calculate and return the sum of marks
+    public int sum() {
+        return mark1 + mark2 + mark3;
+    }
+
+    // Method to calculate and return the average of marks
+    public double avg() {
+        return sum() / 3.0;
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        Marks student = new Marks();
+        student.set_marks(); // Input marks
+
+        int total = student.sum();       // Calculate sum
+        double average = student.avg();  // Calculate average
+
+        System.out.println("Total marks: " + total);
+        System.out.println("Average marks: " + average);
+    }
+}
+
+\\Home Task 1:
+
+
+public class Rectangle {
+    // Data fields
+    private double width;
+    private double height;
+
+    // No-arg constructor: default rectangle
+    public Rectangle() {
+        width = 1;
+        height = 1;
+    }
+
+    // Constructor with specified width and height
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    // Getter for width
+    public double getWidth() {
+        return width;
+    }
+
+    // Getter for height
+    public double getHeight() {
+        return height;
+    }
+
+    // Method to calculate area
+    public double getArea() {
+        return width * height;
+    }
+
+    // Method to calculate perimeter
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    // Test program
+    public static void main(String[] args) {
+        // First rectangle
+        Rectangle rect1 = new Rectangle(4, 40);
+        System.out.println("Rectangle 1:");
+        System.out.println("Width: " + rect1.getWidth());
+        System.out.println("Height: " + rect1.getHeight());
+        System.out.println("Area: " + rect1.getArea());
+        System.out.println("Perimeter: " + rect1.getPerimeter());
+        System.out.println();
+
+        // Second rectangle
+        Rectangle rect2 = new Rectangle(3.5, 35.9);
+        System.out.println("Rectangle 2:");
+        System.out.println("Width: " + rect2.getWidth());
+        System.out.println("Height: " + rect2.getHeight());
+        System.out.println("Area: " + rect2.getArea());
+        System.out.println("Perimeter: " + rect2.getPerimeter());
+    }
+}
+
+\\Home Task 2:
+
+
+public class Stock {
+    private String symbol;
+    private String name;
+    private double previousClosingPrice;
+    private double currentPrice;
+
+    // Constructor
+    public Stock(String symbol, String name) {
+        this.symbol = symbol;
+        this.name = name;
+    }
+
+    // Method to calculate percentage change
+    public double getChangePercent() {
+        return ((currentPrice - previousClosingPrice) / previousClosingPrice) * 100;
+    }
+
+    // Setters
+    public void setPreviousClosingPrice(double previousClosingPrice) {
+        this.previousClosingPrice = previousClosingPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+}
+
+\\Home Task 3:
+import java.util.Date;
+
+public class UseDateClass {
+    public static void main(String[] args) {
+
+        long[] times = {
+                10000L,
+                100000L,
+                1000000L,
+                10000000L,
+                100000000L,
+                1000000000L,
+                10000000000L,
+                100000000000L
+        };
+
+        Date date = new Date();
+
+        for (long t : times) {
+            date.setTime(t);
+            System.out.println("Elapsed time: " + t + " --> " + date.toString());
+        }
+    }
+}
+
+\\Home Task 4:
+import java.util.Random;
+
+public class RandomNumbers {
+    public static void main(String[] args) {
+
+        // Create Random object with seed 1000
+        Random random = new Random(1000);
+
+        // Display first 50 random integers between 0 and 100
+        for (int i = 1; i <= 50; i++) {
+            int num = random.nextInt(100); // generates number from 0 to 99
+            System.out.print(num + " ");
+
+            // Optional: New line every 10 numbers for neat output
+            if (i % 10 == 0) {
+                System.out.println();
+            }
+        }
+    }
+}
+
+\\Home Task 5:
+
+import java.util.Date;
+
+public class Account {
+    private int id = 0;
+    private double balance = 0;
+    private double annualInterestRate = 0;
+    private Date dateCreated;
+
+    // No-arg constructor
+    public Account() {
+        dateCreated = new Date();
+    }
+
+    // Constructor with id and balance
+    public Account(int id, double balance) {
+        this.id = id;
+        this.balance = balance;
+        dateCreated = new Date();
+    }
+
+    // Accessors and mutators
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getAnnualInterestRate() {
+        return annualInterestRate;
+    }
+
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    // Monthly interest rate (percentage -> decimal for calculation)
+    public double getMonthlyInterestRate() {
+        return annualInterestRate / 12 / 100;
+    }
+
+    // Monthly interest (balance * monthly rate)
+    public double getMonthlyInterest() {
+        return balance * getMonthlyInterestRate();
+    }
+
+    // Withdraw money
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    // Deposit money
+    public void deposit(double amount) {
+        balance += amount;
+    }
+}
